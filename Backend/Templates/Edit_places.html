@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+{% extends 'Tourism_page.html' %}
+{% block content %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div class="card">
+                  <div class="card-body">
+                    <h4 class="card-title">Basic form elements</h4>
+                    <p class="card-description"> Basic form elements </p>
+                    <form method="POST" action="{% url 'update_Places' u_id=edit.id %}" id="demo-form2" enctype="multipart/form-data" data-parsley-validate="" class="form-horizontal form-label-left" novalidate="">
+                        {% csrf_token %}
+                        <div class="form-group">
+                            <form class="forms-sample">
+                            <label for="exampleInputName1">Destination Name <span class="required">*</span></label>
+                            <select class="form-control" id="exampleSelectGender" name="Name" >
+                          <option>Domestic</option>
+                          <option>International</option>
+                        </select>
+                        </div>
+                      <div class="form-group">
+                        <label for="exampleInputName1">Name</label>
+                        <input type="text" class="form-control" id="exampleInputName1" placeholder="Name" name="P_Name" value="{{edit.P_Name}}">
+                      </div>
+                      <div class="form-group">
+                        <label for="exampleInputName1">Price</label>
+                        <input type="text" class="form-control" id="exampleInputName1" placeholder="Price" name="P_Price" value="{{edit.P_Price}}">
+                      </div>
+
+<!--                      <div class="form-group">-->
+<!--                        <label for="exampleInputEmail3">Email address</label>-->
+<!--                        <input type="email" class="form-control" id="exampleInputEmail3" placeholder="Email">-->
+<!--                      </div>-->
+<!--                      <div class="form-group">-->
+<!--                        <label for="exampleInputPassword4">Password</label>-->
+<!--                        <input type="password" class="form-control" id="exampleInputPassword4" placeholder="Password">-->
+<!--                      </div>-->
+<!--                      <div class="form-group">-->
+<!--                        <label for="exampleSelectGender">Gender</label>-->
+<!--                        <select class="form-control" id="exampleSelectGender">-->
+<!--                          <option>Male</option>-->
+<!--                          <option>Female</option>-->
+<!--                        </select>-->
+<!--                      </div>-->
+                      <div class="form-group">
+                        <label for="exampleTextarea1">Description</label>
+                        <textarea class="form-control" id="exampleTextarea1" name="P_Description" rows="4">{{edit.P_Description}}</textarea>
+                      </div>
+                       <div class="form-group">
+                         <label class="control-label col-md-3 col-sm-5 col-xs-15">Images <span class="required">:</span>
+                        </label>
+                         <div class="col-md-6 col-sm-8 col-xs-15">
+                              <img src="{{edit.P_Image.url}}" width="80px" height="80px">
+                        <input class="form-control" type="file" name="images" value="{{edit.images}}" id="formFileMultiple" multiple="">
+                         </div>
+                      </div>
+<!--                      <div class="form-group">-->
+<!--                        <label for="exampleInputCity1">City</label>-->
+<!--                        <input type="text" class="form-control" id="exampleInputCity1" placeholder="Location">-->
+<!--                      </div>-->
+
+                      <button type="submit" class="btn btn-primary mr-2">Submit</button>
+                      <button class="btn btn-dark">Cancel</button>
+                    </form>
+                  </div>
+                </div>
+</body>
+</html>
+{% endblock %}

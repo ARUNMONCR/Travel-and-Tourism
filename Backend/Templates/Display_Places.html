@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+{% extends 'Tourism_page.html' %}
+{% block content %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div class="card">
+                  <div class="card-body" style="background-colour:white">
+                    <h4 class="card-title">Places</h4>
+                    <p class="card-description">
+                    </p>
+                    <div class="table-responsive">
+                      <table class="table table-dark">
+                        <thead>
+                          <tr>
+                            <th> Destination Name </th>
+                            <th> Name </th>
+                            <th> Price </th>
+                            <th> Description </th>
+                            <th> Image </th>
+                            <th> Options </th>
+                          </tr>
+                        {% for p in place %}
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <td>{{p.modeName}} </td>
+                            <td>{{p.state}} </td>
+                            <td>{{p.P_Price}} </td>
+                            <td>{{p.P_Description}} </td>
+                            <td>
+                              <img src="{{p.P_Image.url}}" width="200px" height="200px">
+                            </td>
+                            <td>
+                                <a href="{% url 'Edit_Places' e_id=p.id %}">
+                                                    <button type="submit" class="btn btn-primary">Edit</button>
+                                                </a>
+                                                 <a>
+                                                    <button type="submit" class="btn btn-primary">Delete</button>
+                                                </a>
+                            </td>
+                          </tr>
+                        {% endfor %}
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+</body>
+</html>
+{% endblock %}
